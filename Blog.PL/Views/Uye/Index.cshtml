@@ -1,0 +1,27 @@
+﻿
+@model Blog.PL.Models.UyeModel
+    @{ 
+        ViewBag.title = "Index";
+    }
+<br /> <br /><br /> <br /><br /> 
+<script src="~/scripts/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript">
+      
+      $(document).ready(function () {
+          $('#btnGetir').click(function () {
+              $.getJSON("/Uye/UyeListesi", function (data) {
+                  var Uyeler = "";
+                  $.each(data, function (i, eleman) {
+                      Uyeler += (i + 1) + ".üye : " + eleman.adsoyad + " , email : " + eleman.email + " </br>";
+                  });
+                  $('#divUyeListesi').html(Uyeler);
+              });
+          });
+      });
+
+  </script>
+&nbsp;&nbsp;&nbsp;&nbsp; <input id="btnGetir" type="button" value="Üyeleri Listele" /><br /><br />
+ <div id="divUyeListesi" style="margin:20px">
+      <h3>Üye Listesi</h3>
+     <br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br /><br /> <br />
+ </div>
